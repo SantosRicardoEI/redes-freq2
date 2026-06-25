@@ -2032,5 +2032,557 @@ export const questions: StudyQuestion[] = [
     answer:
       "Uma VLAN separa logicamente hosts numa infraestrutura local. Um trunk 802.1Q transporta várias VLANs entre switches próximos. EVPN/VXLAN estende redes de nível 2 por cima de IP, permitindo ligar LANs distantes.",
     tags: ["comparação", "vlan", "802.1q", "evpn", "vxlan"]
+  },
+  {
+    id: "q-5-1-011",
+    chapterId: "5.1",
+    question: "Porque se diz que o serviço do nível de ligação é local e não ponta-a-ponta?",
+    answer:
+      "Porque cada execução do protocolo de ligação apenas transfere uma trama entre dois nós fisicamente adjacentes. Ao longo do caminho completo, o datagrama IP pode ser encapsulado em tramas diferentes, uma por cada ligação.",
+    tags: ["conceito", "ligação", "trama"]
+  },
+  {
+    id: "q-5-1-012",
+    chapterId: "5.1",
+    question: "Na analogia da viagem dos slides, o que representam turista, troço da viagem, meio de transporte e agente de viagens?",
+    answer:
+      "O turista representa o datagrama; cada troço da viagem representa uma ligação de comunicação; o meio de transporte representa o protocolo de nível de ligação usado nesse troço; o agente de viagens representa o algoritmo de roteamento que escolhe o caminho.",
+    tags: ["revisão", "ligação", "roteamento"]
+  },
+  {
+    id: "q-5-1-013",
+    chapterId: "5.1",
+    question: "Em que situações o serviço de acesso ao meio é essencial no nível de ligação?",
+    answer:
+      "É essencial quando a ligação é partilhada por vários nós, como numa LAN wireless, satélite, HFC ou Ethernet antiga. Nesses casos é preciso coordenar quem transmite para reduzir colisões e desperdício.",
+    tags: ["conceito", "acesso-múltiplo", "meio-partilhado"]
+  },
+  {
+    id: "q-5-1-014",
+    chapterId: "5.1",
+    question: "Porque a entrega fiável ao nível de ligação é rara em fibra ou par entrançado, mas útil em wireless?",
+    answer:
+      "Em fibra e em muitas ligações com fio a taxa de erro de bit é baixa, por isso a fiabilidade local teria pouco ganho. Em wireless há mais ruído, atenuação e interferência; recuperar logo na ligação evita retransmissões ponta-a-ponta mais caras.",
+    tags: ["comparação", "fiabilidade", "wireless", "erros"]
+  },
+  {
+    id: "q-5-1-015",
+    chapterId: "5.1",
+    question: "Distingue controlo de fluxo no nível de ligação e controlo de fluxo ponta-a-ponta.",
+    answer:
+      "No nível de ligação, o controlo de fluxo mantém o ritmo entre dois nós adjacentes, por exemplo entre dois adaptadores ligados diretamente. Ponta-a-ponta, o controlo de fluxo protege o recetor final ao longo de toda a comunicação.",
+    tags: ["comparação", "controlo-fluxo", "ligação"]
+  },
+  {
+    id: "q-5-1-016",
+    chapterId: "5.1",
+    question: "Se uma trama chega com erro detetado, que alternativas gerais existem no nível de ligação?",
+    answer:
+      "O recetor pode descartar a trama, sinalizar o emissor para retransmitir se o protocolo tiver fiabilidade local, ou corrigir o erro diretamente se o código usado permitir correção de erros.",
+    tags: ["conceito", "erros", "fiabilidade"]
+  },
+  {
+    id: "q-5-1-017",
+    chapterId: "5.1",
+    question: "Porque o adaptador de rede implementa normalmente tanto o nível de ligação como o físico?",
+    answer:
+      "Porque a NIC precisa de criar e interpretar tramas, verificar campos de ligação e também transmitir/receber bits no meio físico. Por isso combina hardware, firmware e software ligados ao barramento do host.",
+    tags: ["conceito", "nic", "adaptador", "físico"]
+  },
+  {
+    id: "q-5-1-018",
+    chapterId: "5.1",
+    question: "Prática: um datagrama atravessa WiFi do portátil ao AP e Ethernet do AP ao router. O que muda entre as duas ligações?",
+    answer:
+      "O datagrama IP pode manter-se, mas a trama de nível de ligação muda. Na primeira ligação é encapsulado numa trama 802.11; na seguinte é extraído e reencapsulado numa trama Ethernet, com cabeçalhos e regras próprias.",
+    tags: ["prática", "encapsulamento", "wifi", "ethernet"]
+  },
+  {
+    id: "q-5-2-012",
+    chapterId: "5.2",
+    question: "Num protocolo de acesso aleatório, que duas coisas têm de estar definidas?",
+    answer:
+      "Tem de estar definido como se detetam colisões e como se recupera delas. A recuperação costuma envolver retransmissões retardadas, normalmente com algum atraso aleatório para reduzir nova colisão.",
+    tags: ["conceito", "acesso-aleatório", "colisão"]
+  },
+  {
+    id: "q-5-2-013",
+    chapterId: "5.2",
+    question: "Onde entram ALOHA e slotted ALOHA na taxonomia dos protocolos de acesso múltiplo?",
+    answer:
+      "Entram na família de acesso aleatório. A ideia geral é permitir que nós transmitam sem reserva fixa do canal e lidar com colisões por retransmissão; no slotted ALOHA as tentativas são alinhadas a slots de tempo.",
+    tags: ["conceito", "aloha", "acesso-aleatório"]
+  },
+  {
+    id: "q-5-2-014",
+    chapterId: "5.2",
+    question: "Porque o protocolo ideal dos slides não deve precisar de um nó especial nem de sincronização global?",
+    answer:
+      "Porque isso torna o sistema mais simples, escalável e robusto. Um coordenador central cria ponto único de falha; sincronização global de relógios ou slots complica a implementação e pode ser difícil em redes distribuídas.",
+    tags: ["interpretação", "acesso-múltiplo", "descentralização"]
+  },
+  {
+    id: "q-5-2-015",
+    chapterId: "5.2",
+    question: "Prática: num canal de R = 120 Mbps, se 4 nós querem transmitir, que taxa média teria cada um num protocolo ideal?",
+    answer:
+      "Cada nó teria em média R/M = 120/4 = 30 Mbps. A condição ideal dos slides diz que, com M nós ativos, cada um deve receber uma fração média igual do canal.",
+    tags: ["prática", "acesso-múltiplo"]
+  },
+  {
+    id: "q-5-2-016",
+    chapterId: "5.2",
+    question: "Prática: em TDMA com 8 nós e canal de 80 Mbps, que taxa média máxima tem um nó se só puder usar a sua slot fixa?",
+    answer:
+      "Tem 80/8 = 10 Mbps em média, mesmo que seja o único nó com dados. Esta é a ineficiência da divisão fixa em carga reduzida: o nó não consegue usar automaticamente o canal inteiro.",
+    tags: ["prática", "tdma", "divisão-canal"]
+  },
+  {
+    id: "q-5-2-017",
+    chapterId: "5.2",
+    question: "Porque distância e atraso de propagação aumentam a probabilidade de colisão em CSMA?",
+    answer:
+      "Porque o sinal de uma transmissão demora mais tempo a chegar aos outros nós. Durante esse intervalo, outro nó pode escutar o canal como livre e começar a transmitir, causando colisão quando os sinais se encontram.",
+    tags: ["conceito", "csma", "colisão", "atraso-propagação"]
+  },
+  {
+    id: "q-5-2-018",
+    chapterId: "5.2",
+    question: "Porque a deteção de colisões é fácil em redes com fio e difícil em redes sem fio?",
+    answer:
+      "Em redes com fio, o adaptador consegue monitorizar o meio enquanto transmite e detetar energia/sinais incompatíveis. Em wireless, o emissor transmite com potência muito superior ao sinal recebido e pode haver nós ocultos, tornando a colisão difícil de observar.",
+    tags: ["comparação", "csma-cd", "csma-ca", "wireless"]
+  },
+  {
+    id: "q-5-2-019",
+    chapterId: "5.2",
+    question: "Qual é o objetivo do backoff aleatório depois de uma colisão?",
+    answer:
+      "Evitar que os mesmos nós voltem a retransmitir exatamente ao mesmo tempo. Ao escolher tempos aleatórios diferentes, aumenta a probabilidade de uma retransmissão conseguir usar o canal sem nova colisão.",
+    tags: ["conceito", "backoff", "colisão"]
+  },
+  {
+    id: "q-5-2-020",
+    chapterId: "5.2",
+    question: "Porque polling e token passing são descritos como 'o melhor dos dois mundos, supostamente'?",
+    answer:
+      "Porque evitam colisões e podem partilhar o canal de forma ordenada, mas pagam overhead e latência de coordenação. Além disso, polling depende do mestre e token passing depende do token, criando modos de falha próprios.",
+    tags: ["interpretação", "polling", "token"]
+  },
+  {
+    id: "q-5-3-011",
+    chapterId: "5.3",
+    question: "Porque cada interface numa LAN precisa normalmente de um IP e de um MAC?",
+    answer:
+      "O IP identifica a interface no nível de rede e permite encaminhamento entre redes. O MAC identifica a interface no nível de ligação e permite entregar a trama localmente dentro da LAN.",
+    tags: ["conceito", "mac", "ip", "interface"]
+  },
+  {
+    id: "q-5-3-012",
+    chapterId: "5.3",
+    question: "Quem administra a alocação de endereços MAC e porque isso importa?",
+    answer:
+      "A alocação é administrada pelo IEEE; fabricantes compram partes do espaço de endereços. Isto permite que endereços MAC sejam, em geral, globalmente únicos e gravados nos adaptadores.",
+    tags: ["conceito", "mac", "ieee"]
+  },
+  {
+    id: "q-5-3-013",
+    chapterId: "5.3",
+    question: "Porque o pedido ARP é broadcast mas a resposta ARP é direta?",
+    answer:
+      "O pedido é broadcast porque o emissor ainda não sabe qual MAC corresponde ao IP procurado. A resposta é direta porque o nó que responde já recebeu o MAC de origem do pedido e pode enviar a resposta apenas para esse emissor.",
+    tags: ["conceito", "arp", "broadcast"]
+  },
+  {
+    id: "q-5-3-014",
+    chapterId: "5.3",
+    question: "Para que serve o TTL numa entrada da tabela ARP?",
+    answer:
+      "Serve para remover mapeamentos antigos. Se uma interface muda, um adaptador é substituído ou a topologia local muda, entradas ARP demasiado antigas poderiam apontar para MACs errados.",
+    tags: ["conceito", "arp", "ttl"]
+  },
+  {
+    id: "q-5-3-015",
+    chapterId: "5.3",
+    question: "Como um host pode saber o IP do router/gateway e depois descobrir o MAC desse router?",
+    answer:
+      "O IP do gateway pode ser configurado manualmente ou recebido por DHCP. Depois, para enviar a primeira trama ao gateway, o host usa ARP na LAN para resolver o IP da interface do router no respetivo MAC.",
+    tags: ["conceito", "arp", "dhcp", "gateway"]
+  },
+  {
+    id: "q-5-3-016",
+    chapterId: "5.3",
+    question: "O que faz um router ao receber uma trama Ethernet que contém um datagrama para outra rede?",
+    answer:
+      "O router verifica e remove a trama de entrada, passa o datagrama ao nível IP, escolhe a interface de saída e cria uma nova trama de ligação para o próximo salto. Os MACs mudam; os IPs origem/destino do datagrama mantêm-se.",
+    tags: ["conceito", "router", "mac", "ip"]
+  },
+  {
+    id: "q-5-3-017",
+    chapterId: "5.3",
+    question: "Prática: A envia para B noutra rede via R. No primeiro salto, o MAC destino é de B ou de R?",
+    answer:
+      "É o MAC da interface de R na LAN de A. A trama só precisa de chegar ao próximo nó fisicamente conectado. O IP destino continua a ser o de B, porque o datagrama ainda é para o host final.",
+    tags: ["prática", "arp", "gateway", "mac"]
+  },
+  {
+    id: "q-5-3-018",
+    chapterId: "5.3",
+    question: "Porque o ARP é considerado plug-and-play?",
+    answer:
+      "Porque os nós constroem as suas tabelas ARP automaticamente à medida que precisam de comunicar. Não é necessário um administrador preencher manualmente os mapeamentos IP-MAC de cada host.",
+    tags: ["conceito", "arp", "plug-and-play"]
+  },
+  {
+    id: "q-5-4-011",
+    chapterId: "5.4",
+    question: "Que características explicam a dominância histórica da Ethernet nas LANs com fios?",
+    answer:
+      "A Ethernet é simples, barata, foi a primeira tecnologia LAN amplamente usada e evoluiu de 10 Mbps até centenas de Gbps. A existência de chips com múltiplas velocidades também ajudou à adoção.",
+    tags: ["conceito", "ethernet", "lan"]
+  },
+  {
+    id: "q-5-4-012",
+    chapterId: "5.4",
+    question: "Porque a topologia em estrela com switch reduz colisões face ao barramento?",
+    answer:
+      "No barramento todos partilham o mesmo meio e podem colidir. Na estrela, cada host tem uma ligação dedicada ao switch; cada braço corre Ethernet separadamente e pode operar full-duplex, eliminando colisões nessa ligação.",
+    tags: ["comparação", "ethernet", "switch", "colisão"]
+  },
+  {
+    id: "q-5-4-013",
+    chapterId: "5.4",
+    question: "Qual é a estrutura do preâmbulo Ethernet indicada nos slides?",
+    answer:
+      "O preâmbulo tem 7 bytes com o padrão 10101010, seguidos de 1 byte 10101011. Esta sequência ajuda o recetor a sincronizar o seu relógio com o emissor antes da trama.",
+    tags: ["conceito", "ethernet", "preâmbulo"]
+  },
+  {
+    id: "q-5-4-014",
+    chapterId: "5.4",
+    question: "Quando uma trama Ethernet com destino FF-FF-FF-FF-FF-FF é aceite por um adaptador?",
+    answer:
+      "É aceite por todos os adaptadores da LAN que a recebem, porque esse é o endereço MAC de broadcast. O adaptador entrega o payload ao nível superior tal como faria com uma trama endereçada ao seu próprio MAC.",
+    tags: ["conceito", "ethernet", "broadcast", "mac"]
+  },
+  {
+    id: "q-5-4-015",
+    chapterId: "5.4",
+    question: "Qual é a consequência de Ethernet não usar ACK/NAK ao nível da ligação?",
+    answer:
+      "O emissor Ethernet não recebe confirmação local de sucesso ou falha. Se uma trama for descartada por erro ou perda, só haverá recuperação se um nível superior, como TCP, detetar e retransmitir.",
+    tags: ["conceito", "ethernet", "fiabilidade"]
+  },
+  {
+    id: "q-5-4-016",
+    chapterId: "5.4",
+    question: "Prática: uma trama Ethernet com erro no CRC transportava dados UDP. O que acontece se não houver fiabilidade acima?",
+    answer:
+      "A trama é descartada pelo adaptador recetor. Como Ethernet não envia ACK/NAK e UDP não garante retransmissão, esses dados perdem-se para a aplicação, salvo se a própria aplicação tiver recuperação.",
+    tags: ["prática", "ethernet", "crc", "udp"]
+  },
+  {
+    id: "q-5-4-017",
+    chapterId: "5.4",
+    question: "Porque CSMA/CD é associado à Ethernet clássica e não é o ponto central da Ethernet moderna com switches full-duplex?",
+    answer:
+      "CSMA/CD resolve colisões em meios partilhados. Numa Ethernet moderna com switch e ligações dedicadas full-duplex, cada ligação é separada e os nós não disputam o mesmo meio da mesma forma, logo colisões deixam de ser o problema principal.",
+    tags: ["comparação", "ethernet", "csma-cd", "switch"]
+  },
+  {
+    id: "q-5-4-018",
+    chapterId: "5.4",
+    question: "Distingue o papel do campo Tipo e do CRC numa trama Ethernet.",
+    answer:
+      "O campo Tipo indica que protocolo está no payload, como IP, para entrega ao módulo certo. O CRC é usado para deteção de erros na trama; se a verificação falhar, a trama é descartada.",
+    tags: ["comparação", "ethernet", "crc"]
+  },
+  {
+    id: "q-5-5-011",
+    chapterId: "5.5",
+    question: "O que significa dizer que um switch é store-and-forward?",
+    answer:
+      "Significa que o switch recebe a trama, guarda-a temporariamente, examina o cabeçalho de ligação e depois encaminha-a para a interface adequada. Isto distingue o switch de um simples repetidor físico.",
+    tags: ["conceito", "switch", "store-and-forward"]
+  },
+  {
+    id: "q-5-5-012",
+    chapterId: "5.5",
+    question: "Porque A->A' e B->B' podem ocorrer em simultâneo, mas A->A' e C->A' não?",
+    answer:
+      "As duas primeiras transmissões usam saídas diferentes do switch, por isso podem ser comutadas em paralelo. A->A' e C->A' competem pela mesma interface de saída para A', logo uma terá de esperar em buffer.",
+    tags: ["prática", "switch", "comutação", "filas"]
+  },
+  {
+    id: "q-5-5-013",
+    chapterId: "5.5",
+    question: "Para que serve o timestamp ou TTL numa tabela de comutação de um switch?",
+    answer:
+      "Serve para envelhecer entradas aprendidas. Se um host mudar de porta ou sair da LAN, o switch não deve manter para sempre uma associação MAC-interface que já pode estar errada.",
+    tags: ["conceito", "switch", "tabela", "ttl"]
+  },
+  {
+    id: "q-5-5-014",
+    chapterId: "5.5",
+    question: "Porque um switch descarta uma trama quando o destino está no mesmo segmento de onde a trama chegou?",
+    answer:
+      "Porque reenviar a trama para o mesmo segmento seria inútil: o destino já está do lado de onde a trama veio. Esta decisão chama-se filtragem e reduz tráfego desnecessário.",
+    tags: ["conceito", "switch", "filtragem"]
+  },
+  {
+    id: "q-5-5-015",
+    chapterId: "5.5",
+    question: "Distingue flooding por destino desconhecido e encaminhamento seletivo.",
+    answer:
+      "Com destino desconhecido, o switch envia a trama por todas as portas exceto a de entrada para tentar alcançar o destino. Com destino conhecido, envia apenas pela interface indicada na tabela.",
+    tags: ["comparação", "switch", "flooding"]
+  },
+  {
+    id: "q-5-5-016",
+    chapterId: "5.5",
+    question: "Prática: um switch tem A:1 e B:2. Chega uma trama de C pela interface 3 para A. O que aprende e o que faz?",
+    answer:
+      "Aprende C:3, porque o MAC de origem indica onde está C. Depois consulta o destino A, encontra A:1 e encaminha a trama apenas pela interface 1.",
+    tags: ["prática", "switch", "auto-aprendizagem"]
+  },
+  {
+    id: "q-5-5-017",
+    chapterId: "5.5",
+    question: "Prática: um switch tem A:1. Chega uma trama de B pela interface 2 para A, mas A também está no mesmo segmento da interface 2. O que deve fazer?",
+    answer:
+      "Depois de aprender ou atualizar B:2, o switch vê que o destino A está no mesmo segmento/interface de chegada. Nesse caso filtra e descarta a trama, porque não precisa de a reenviar.",
+    tags: ["prática", "switch", "filtragem"]
+  },
+  {
+    id: "q-5-5-018",
+    chapterId: "5.5",
+    question: "Um switch de camada 2 usa endereços IP para aprender a sua tabela?",
+    answer:
+      "Não. O switch aprende a tabela a partir dos endereços MAC de origem das tramas e das interfaces por onde chegam. Endereços IP são usados pelos routers, no nível de rede.",
+    tags: ["conceito", "switch", "mac", "router"]
+  },
+  {
+    id: "q-5-5-019",
+    chapterId: "5.5",
+    question: "Sem VLANs, um switch separa domínios de colisão mas não necessariamente domínios de broadcast. Explica.",
+    answer:
+      "Cada ligação ao switch é um domínio de colisão separado, sobretudo em full-duplex. Mas uma trama broadcast, como ARP, é normalmente inundada pelas portas da LAN, atingindo todos os hosts do mesmo domínio de broadcast.",
+    tags: ["comparação", "switch", "broadcast", "vlan"]
+  },
+  {
+    id: "q-5-5-020",
+    chapterId: "5.5",
+    question: "Como a auto-aprendizagem ajuda quando um host muda de porta no switch?",
+    answer:
+      "Quando o switch recebe uma nova trama desse host pela nova porta, atualiza a associação do MAC de origem para essa interface. Entradas antigas também expiram com o tempo, evitando encaminhamento obsoleto.",
+    tags: ["conceito", "switch", "auto-aprendizagem", "mobilidade"]
+  },
+  {
+    id: "q-5-6-015",
+    chapterId: "5.6",
+    question: "Dá um exemplo de dispositivo wireless sem mobilidade e explica porque isso importa.",
+    answer:
+      "Uma smart TV fixa ligada por WiFi é wireless, mas não móvel. Isto importa porque o desafio do canal de rádio existe, mas não há necessariamente handover nem mudança de ponto de anexação.",
+    tags: ["conceito", "wifi", "mobilidade"]
+  },
+  {
+    id: "q-5-6-016",
+    chapterId: "5.6",
+    question: "Porque o impacto lógico do wireless nos níveis superiores deveria ser pequeno, mas o impacto de desempenho pode ser grande?",
+    answer:
+      "Logicamente, IP, TCP e UDP continuam a funcionar sobre a ligação sem fios. Em desempenho, perdas por erros de bit, retransmissões locais, handover, atraso e pouca largura de banda podem degradar bastante as aplicações.",
+    tags: ["comparação", "wifi", "tcp", "desempenho"]
+  },
+  {
+    id: "q-5-6-017",
+    chapterId: "5.6",
+    question: "Porque tráfego em tempo real sofre particularmente em redes sem fios móveis?",
+    answer:
+      "Porque é sensível a atraso, jitter e perdas. Erros wireless, retransmissões e handovers podem introduzir pausas perceptíveis, mesmo quando a comunicação lógica continua possível.",
+    tags: ["interpretação", "wifi", "mobilidade", "tempo-real"]
+  },
+  {
+    id: "q-5-6-018",
+    chapterId: "5.6",
+    question: "Que papel tem uma estação-base ou AP numa rede sem fios em infraestrutura?",
+    answer:
+      "A estação-base ou AP faz de relay entre os hosts sem fios da sua área e a rede cablada. Recebe tramas pelo rádio e encaminha-as para a infraestrutura, e vice-versa.",
+    tags: ["conceito", "wifi", "ap", "infraestrutura"]
+  },
+  {
+    id: "q-5-6-019",
+    chapterId: "5.6",
+    question: "Porque canais WiFi vizinhos podem causar interferência?",
+    answer:
+      "Porque o espetro é dividido em canais e APs próximos podem escolher canais iguais ou sobrepostos. Se dois BSS usam frequências que interferem, transmissões de uma rede podem degradar a outra.",
+    tags: ["conceito", "wifi", "canais", "interferência"]
+  },
+  {
+    id: "q-5-6-020",
+    chapterId: "5.6",
+    question: "O que têm em comum as gerações 802.11 listadas nos slides?",
+    answer:
+      "Apesar de diferirem em taxas máximas e bandas de frequência, todas usam CSMA/CA para acesso múltiplo e suportam modo infraestrutura e modo ad hoc.",
+    tags: ["conceito", "wifi", "802.11", "csma-ca"]
+  },
+  {
+    id: "q-5-6-021",
+    chapterId: "5.6",
+    question: "O problema do nó oculto pode ser causado por distância e por obstáculos. Em ambos os casos, qual é a consequência?",
+    answer:
+      "Dois emissores, como A e C, não se ouvem entre si, mas ambos interferem no recetor B. Assim, cada um pode achar o canal livre e transmitir, causando colisão em B.",
+    tags: ["conceito", "wifi", "nó-oculto"]
+  },
+  {
+    id: "q-5-6-022",
+    chapterId: "5.6",
+    question: "Qual é a diferença prática entre DIFS e SIFS no CSMA/CA?",
+    answer:
+      "O emissor espera o canal livre durante DIFS antes de transmitir dados. O recetor envia ACK após SIFS, que é mais curto, dando prioridade à confirmação antes de outras transmissões competirem pelo canal.",
+    tags: ["conceito", "wifi", "csma-ca", "difs", "sifs"]
+  },
+  {
+    id: "q-5-6-023",
+    chapterId: "5.6",
+    question: "Se o emissor 802.11 não recebe ACK, o que conclui e como reage?",
+    answer:
+      "Conclui que houve perda ou colisão. Depois espera DIFS, escolhe um backoff aleatório maior e tenta retransmitir; o intervalo de backoff aumenta para reduzir colisões repetidas.",
+    tags: ["conceito", "wifi", "ack", "backoff"]
+  },
+  {
+    id: "q-5-6-024",
+    chapterId: "5.6",
+    question: "Como evolui o temporizador de backoff no CSMA/CA?",
+    answer:
+      "É escolhido aleatoriamente e decresce enquanto o canal está livre. Quando chega a zero, o nó transmite. Se houver nova perda/colisão, o intervalo possível de backoff aumenta, tipicamente duplicando.",
+    tags: ["conceito", "wifi", "backoff", "csma-ca"]
+  },
+  {
+    id: "q-5-6-025",
+    chapterId: "5.6",
+    question: "Porque RTS e CTS incluem a duração da transmissão seguinte?",
+    answer:
+      "Porque os outros nós que ouvem RTS ou CTS sabem durante quanto tempo devem adiar as suas transmissões. Assim, o canal fica reservado para a sequência de dados e ACK.",
+    tags: ["conceito", "wifi", "rts-cts"]
+  },
+  {
+    id: "q-5-6-026",
+    chapterId: "5.6",
+    question: "Porque uma colisão entre RTS é menos grave do que uma colisão entre tramas de dados grandes?",
+    answer:
+      "Porque RTS é curto. Mesmo que dois RTS colidam, o tempo desperdiçado é pequeno comparado com desperdiçar a transmissão completa de uma trama de dados longa.",
+    tags: ["interpretação", "wifi", "rts-cts", "colisão"]
+  },
+  {
+    id: "q-5-6-027",
+    chapterId: "5.6",
+    question: "O que contêm as beacon frames usadas na associação 802.11?",
+    answer:
+      "Contêm informação como o nome da rede, SSID, e o endereço MAC do AP. Um host que chega percorre canais à escuta dessas beacons para escolher a que AP se associar.",
+    tags: ["conceito", "wifi", "associação", "beacon", "ssid"]
+  },
+  {
+    id: "q-5-6-028",
+    chapterId: "5.6",
+    question: "Quais são as fases de segurança WiFi indicadas nos slides antes da comunicação cifrada?",
+    answer:
+      "O dispositivo descobre as capacidades de segurança, realiza autenticação mútua, deriva chaves e recebe/distribui uma chave simétrica partilhada quando aplicável. Depois comunica de forma cifrada sobre WiFi.",
+    tags: ["conceito", "wifi", "wpa3", "autenticação", "encriptação"]
+  },
+  {
+    id: "q-5-6-029",
+    chapterId: "5.6",
+    question: "Prática: H1 move-se de um AP para outro mas permanece na mesma sub-rede IP. O IP tem de mudar?",
+    answer:
+      "Não necessariamente. Como H1 continua na mesma sub-rede IP, pode manter o endereço IP. O switch aprende a nova porta quando recebe uma trama de H1 através do novo AP.",
+    tags: ["prática", "wifi", "mobilidade", "switch"]
+  },
+  {
+    id: "q-5-6-030",
+    chapterId: "5.6",
+    question: "Porque mudar entre redes de acesso mantendo ligações ativas é o cenário de mobilidade mais difícil?",
+    answer:
+      "Porque pode mudar o ponto de anexação e até a sub-rede, mas as ligações de transporte e as aplicações devem continuar sem quebra. É preciso lidar com endereçamento, encaminhamento, perdas e atraso de handover.",
+    tags: ["interpretação", "mobilidade", "handover", "wifi"]
+  },
+  {
+    id: "q-5-7-013",
+    chapterId: "5.7",
+    question: "Como uma VLAN resolve o exemplo administrativo ECATI/FD dos slides?",
+    answer:
+      "Permite que um utilizador fisicamente ligado a um switch ou gabinete diferente continue logicamente na VLAN da sua organização. A localização física deixa de determinar sozinha a LAN lógica do utilizador.",
+    tags: ["conceito", "vlan", "administração"]
+  },
+  {
+    id: "q-5-7-014",
+    chapterId: "5.7",
+    question: "Porque ARP e DHCP são exemplos importantes na motivação das VLANs?",
+    answer:
+      "Porque ambos usam broadcast no nível 2 em vários momentos. Numa LAN grande com um único domínio de broadcast, esse tráfego atravessa toda a rede; VLANs limitam o alcance do broadcast à LAN virtual relevante.",
+    tags: ["conceito", "vlan", "broadcast", "arp", "dhcp"]
+  },
+  {
+    id: "q-5-7-015",
+    chapterId: "5.7",
+    question: "Além de VLANs baseadas em portos, que outra forma de associação é referida nos slides?",
+    answer:
+      "Também é possível definir a VLAN com base nos endereços MAC dos hosts. Nesse caso, a pertença lógica pode seguir o dispositivo, em vez de depender apenas do porto físico usado.",
+    tags: ["conceito", "vlan", "mac"]
+  },
+  {
+    id: "q-5-7-016",
+    chapterId: "5.7",
+    question: "O que significa associação dinâmica de portos a VLANs?",
+    answer:
+      "Significa que os portos podem ser atribuídos a VLANs por configuração ou gestão, podendo mudar ao longo do tempo. Isto dá flexibilidade administrativa sem alterar a cablagem física.",
+    tags: ["conceito", "vlan", "portos"]
+  },
+  {
+    id: "q-5-7-017",
+    chapterId: "5.7",
+    question: "Porque um trunk é preferível a ter uma ligação física separada por VLAN entre switches?",
+    answer:
+      "Porque um único trunk consegue transportar tramas de várias VLANs entre switches, desde que as tramas sejam identificadas com tags. Isso reduz cablagem e permite estender múltiplas VLANs pela mesma ligação física.",
+    tags: ["interpretação", "vlan", "trunk", "802.1q"]
+  },
+  {
+    id: "q-5-7-018",
+    chapterId: "5.7",
+    question: "Quando é que uma trama precisa de tag 802.1Q?",
+    answer:
+      "Precisa de tag quando atravessa ligações trunk entre switches e é necessário preservar a VLAN a que pertence. Em portas de acesso para hosts finais, a trama pode ser Ethernet normal sem tag visível ao host.",
+    tags: ["conceito", "vlan", "802.1q", "trunk"]
+  },
+  {
+    id: "q-5-7-019",
+    chapterId: "5.7",
+    question: "Prática: se o campo VLAN ID tem 12 bits, quantos identificadores diferentes são representáveis teoricamente?",
+    answer:
+      "Com 12 bits há 2^12 = 4096 combinações possíveis. Na prática, algumas podem ser reservadas, mas o cálculo pedido a partir do campo dos slides é 4096.",
+    tags: ["prática", "vlan", "802.1q"]
+  },
+  {
+    id: "q-5-7-020",
+    chapterId: "5.7",
+    question: "Para que servem os 3 bits de prioridade na tag 802.1Q?",
+    answer:
+      "Servem para transportar informação de prioridade da trama. Isto permite tratamento diferenciado de tráfego em redes com suporte a classes ou prioridades.",
+    tags: ["conceito", "vlan", "802.1q", "prioridade"]
+  },
+  {
+    id: "q-5-7-021",
+    chapterId: "5.7",
+    question: "Porque o CRC é recalculado quando se adiciona uma tag 802.1Q?",
+    answer:
+      "Porque a trama foi alterada: ganhou campos novos entre o MAC de origem e o campo Tipo. Como o CRC verifica os bits da trama, precisa de ser recalculado para refletir o novo conteúdo.",
+    tags: ["conceito", "vlan", "802.1q", "crc"]
+  },
+  {
+    id: "q-5-7-022",
+    chapterId: "5.7",
+    question: "Compara o tunelamento EVPN/VXLAN com o tunelamento IPv6 sobre IPv4 visto na Aula 4.",
+    answer:
+      "Nos dois casos, um pacote é transportado dentro de outro para atravessar uma infraestrutura que opera noutro nível ou formato. Em EVPN/VXLAN, tramas Ethernet de nível 2 são encapsuladas em datagramas IP de nível 3 para ligar redes L2 distantes.",
+    tags: ["comparação", "evpn", "vxlan", "tunelamento", "ipv6"]
   }
 ];
