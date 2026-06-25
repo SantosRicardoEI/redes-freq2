@@ -2,9 +2,9 @@
 
 ### Muito provável
 
-- [ ] Diferença entre encaminhamento e roteamento — Aula 4, slides 5–6
-- [ ] Plano dos dados vs plano de controlo — Aula 4, slides 6–8
-- [ ] Modelo best effort — Aula 4, slides 9–12
+- [x] Diferença entre encaminhamento e roteamento — Aula 4, slides 5–6
+- [x] Plano dos dados vs plano de controlo — Aula 4, slides 6–8
+- [x] Modelo best effort — Aula 4, slides 9–12
 - [ ] Estrutura de router — Aula 4, slides 13–21
 - [ ] Longest prefix matching — Aula 4, slide 18
 - [ ] Datagrama IPv4 — Aula 4, slides 23–24
