@@ -111,3 +111,133 @@
 - **Próximo salto** — Próximo dispositivo para onde o router envia o datagrama no caminho até ao destino.
 
 - **Interface de saída** — Porta escolhida pelo router para enviar o datagrama para o próximo salto.
+
+## Modelo de serviço (continuação)
+
+- **QoS (Quality of Service)** — Qualidade de serviço; garantias de qualidade na transmissão (largura de banda, perda, ordem, tempo/atraso). A Internet best effort não oferece QoS forte.
+
+- **ATM Constant Bit Rate (CBR)** — Modelo de serviço que garante taxa constante, ordem e tempo.
+
+- **ATM Available Bit Rate (ABR)** — Modelo de serviço que garante uma largura de banda mínima.
+
+- **IntServ** — Modelo da Internet que tenta dar garantias fortes através de reserva de recursos.
+
+- **DiffServ** — Modelo da Internet que melhora o serviço por classes/prioridades de tráfego.
+
+## IP — Datagrama e fragmentação
+
+- **ICMP** — Protocolo da camada de rede usado para reportar erros e sinalização entre routers (ex.: ping, traceroute).
+
+- **TTL (Time To Live)** — Campo do cabeçalho IPv4 com o n.º máximo de saltos restantes; decrementado a cada router; a 0 o datagrama é descartado.
+
+- **Soma de controlo (checksum)** — Campo do cabeçalho IPv4 que deteta erros no cabeçalho; eliminado no IPv6.
+
+- **MTU (Maximum Transmission Unit)** — Tamanho máximo de dados que cabe numa trama do nível de ligação.
+
+- **Fragmentação** — Partir um datagrama IP grande em fragmentos menores para caber na MTU de uma ligação; ocorre na rede.
+
+- **Reconstituição** — Juntar os fragmentos para recompor o datagrama original; ocorre apenas no destino final.
+
+- **Identificador / flags / offset** — Campos do cabeçalho IPv4 usados para identificar e ordenar os fragmentos de um mesmo datagrama.
+
+## Endereçamento IPv4
+
+- **Interface** — Ligação entre um host/router e uma ligação física; é o que o endereço IP identifica.
+
+- **Sub-rede** — Conjunto de interfaces com os mesmos bits de rede que comunicam entre si sem router intermédio.
+
+- **Máscara de sub-rede** — Indica quantos bits do endereço são parte de rede (`/x`).
+
+- **CIDR (Classless InterDomain Routing)** — Notação `a.b.c.d/x` em que x é o n.º de bits da parte de rede, de comprimento arbitrário.
+
+- **Endereço de rede** — Endereço da sub-rede com todos os bits de host a 0.
+
+- **Endereço de broadcast** — Endereço da sub-rede com todos os bits de host a 1.
+
+- **Endereçamento hierárquico** — Atribuição de endereços em hierarquia (ISP → organizações) que permite anunciar rotas eficientemente.
+
+- **Agregação de rotas** — Anunciar várias sub-redes como um único prefixo, graças ao endereçamento hierárquico.
+
+- **ICANN** — Entidade que aloca blocos de endereços (via 5 Registos Regionais) e gere a zona raiz do DNS.
+
+## DHCP
+
+- **DHCP (Dynamic Host Configuration Protocol)** — Protocolo que dá a um host, automaticamente e ao juntar-se à rede, o seu endereço IP e mais configuração (plug-and-play).
+
+- **DHCP Discover / Offer / Request / ACK** — As 4 mensagens (em broadcast) da troca cliente↔servidor DHCP.
+
+## NAT
+
+- **Endereço privado/local** — Endereço de um espaço reservado (10/8, 172.16/12, 192.168/16) válido só na rede local.
+
+- **Endereço público** — Endereço globalmente único, visível na Internet.
+
+- **NAT (Network Address Translation)** — Mecanismo que permite a toda uma rede local partilhar um único IP público, traduzindo (IP, porto).
+
+- **Tabela NAT** — Tabela do router NAT que guarda as traduções (IP origem, porto) ↔ (IP NAT, novo porto).
+
+- **NAT traversal** — Problema/técnicas para alcançar um servidor que está atrás de um NAT.
+
+## IPv6
+
+- **IPv6** — Protocolo de rede com endereços de 128 bits, cabeçalho fixo de 40 bytes, sem checksum e sem fragmentação na rede.
+
+- **Flow label** — Campo IPv6 que identifica datagramas de um mesmo fluxo.
+
+- **Next header** — Campo IPv6 que identifica o protocolo do nível superior ou o próximo cabeçalho de opções.
+
+- **Hop limit** — Campo IPv6 equivalente ao TTL do IPv4.
+
+- **Tunelamento** — Transportar um datagrama IPv6 como payload de um datagrama IPv4 (pacote dentro de pacote) para atravessar troços só-IPv4.
+
+## Algoritmos de roteamento
+
+- **Grafo (N, E)** — Modelo da rede: N = routers, E = ligações; c(x,y) = custo da ligação direta.
+
+- **Link state** — Algoritmo de roteamento global em que todos os nós conhecem a topologia completa.
+
+- **Dijkstra** — Algoritmo que calcula os caminhos de menor custo de uma origem a todos os nós (usado no link state/OSPF).
+
+- **D(v) / p(v) / N'** — Notação de Dijkstra: estimativa de custo até v, predecessor de v, conjunto de nós já resolvidos.
+
+- **Distance vector** — Algoritmo de roteamento descentralizado em que cada nó troca vetores de distâncias só com vizinhos.
+
+- **Equação de Bellman-Ford** — `Dx(y) = min_v { c(x,v) + Dv(y) }`, base do distance vector.
+
+- **Contagem até ao infinito (count-to-infinity)** — Problema do distance vector em que as "más notícias" propagam devagar, com custos a subir em ciclo.
+
+- **Black-holing** — Erro em distance vector em que um nó anuncia caminhos falsos e atrai/descarta tráfego, propagando-se pela rede.
+
+## Roteamento na Internet
+
+- **Sistema Autónomo (AS) / domínio** — Conjunto de routers sob a mesma administração que corre o mesmo protocolo intra-AS.
+
+- **Roteamento intra-AS (intra-domínio)** — Roteamento entre routers do mesmo AS, focado no desempenho.
+
+- **Roteamento inter-AS (inter-domínio)** — Roteamento entre ASes, onde as políticas têm precedência.
+
+- **Router de gateway** — Router na extremidade de um AS, com ligação a outro(s) AS(es); corre eBGP e iBGP.
+
+- **RIP** — Protocolo intra-AS distance vector clássico (vetores a cada 30 s).
+
+- **EIGRP** — Protocolo intra-AS baseado em distance vector (ex-proprietário Cisco).
+
+- **OSPF (Open Shortest Path First)** — Protocolo intra-AS link state (usa Dijkstra), aberto, com mensagens autenticadas e múltiplos caminhos de igual custo.
+
+- **OSPF hierárquico (área / backbone)** — Organização do OSPF em dois níveis (áreas locais + espinha dorsal) para escalar.
+
+- **BGP (Border Gateway Protocol)** — Protocolo de roteamento inter-AS de facto; a "cola" da Internet; path vector sobre TCP.
+
+- **eBGP / iBGP** — BGP entre ASes (externo) / dentro do AS (interno).
+
+- **Path vector** — Tipo de protocolo (BGP) que anuncia caminhos completos (lista de ASes) até prefixos.
+
+- **AS-PATH** — Atributo BGP com a lista de ASes por onde o anúncio passou.
+
+- **NEXT-HOP** — Atributo BGP que indica o router por onde se chega ao AS do próximo salto.
+
+- **Mensagens BGP (OPEN / UPDATE / KEEPALIVE / NOTIFICATION)** — Abrir sessão / anunciar ou retirar caminho / manter ligação / reportar erro ou fechar.
+
+- **Roteamento batata quente (hot-potato)** — Escolher o gateway de saída com menor custo intra-domínio, livrando-se do pacote o mais depressa possível.
+
+- **Preferência local** — Atributo/decisão de política BGP, primeiro critério na seleção de rotas.

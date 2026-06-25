@@ -2,21 +2,21 @@
 
 ### Muito provável
 
-- [x] Diferença entre encaminhamento e roteamento — Aula 4, slides 5–6
-- [x] Plano dos dados vs plano de controlo — Aula 4, slides 6–8
-- [x] Modelo best effort — Aula 4, slides 9–12
-- [ ] Estrutura de router — Aula 4, slides 13–21
-- [ ] Longest prefix matching — Aula 4, slide 18
-- [ ] Datagrama IPv4 — Aula 4, slides 23–24
-- [ ] Fragmentação IP — Aula 4, slides 25–26
-- [ ] Sub-redes e CIDR — Aula 4, slides 27–33
-- [ ] DHCP — Aula 4, slides 34–37
-- [ ] NAT — Aula 4, slides 41 e 43–47
-- [ ] IPv6 e tunelamento — Aula 4, slides 48–54
-- [ ] Link State / Dijkstra — Aula 4, slides 61–67
-- [ ] Distance Vector / Bellman-Ford — Aula 4, slides 68–76
-- [ ] OSPF — Aula 4, slides 83–85
-- [ ] BGP — Aula 4, slides 86–100
+- [x] Diferença entre encaminhamento e roteamento — Aula 4, slides 5–6 → `4.1`
+- [x] Plano dos dados vs plano de controlo — Aula 4, slides 6–8 → `4.1`
+- [x] Modelo best effort — Aula 4, slides 9–12 → `4.1`
+- [x] Estrutura de router — Aula 4, slides 13–21 → `4.2`
+- [x] Longest prefix matching — Aula 4, slide 18 → `4.2`
+- [x] Datagrama IPv4 — Aula 4, slides 23–24 → `4.3`
+- [x] Fragmentação IP — Aula 4, slides 25–26 → `4.3`
+- [x] Sub-redes e CIDR — Aula 4, slides 27–33 → `4.4`
+- [x] DHCP — Aula 4, slides 34–37 → `4.5`
+- [x] NAT — Aula 4, slides 41 e 43–47 → `4.6`
+- [x] IPv6 e tunelamento — Aula 4, slides 48–54 → `4.7`
+- [x] Link State / Dijkstra — Aula 4, slides 61–67 → `4.8`
+- [x] Distance Vector / Bellman-Ford — Aula 4, slides 68–76 → `4.8`
+- [x] OSPF — Aula 4, slides 83–85 → `4.9`
+- [x] BGP — Aula 4, slides 86–100 → `4.9`
 - [ ] Serviços do nível ligação — Aula 5, slides 8–10
 - [ ] Protocolos de acesso múltiplo — Aula 5, slides 13–25
 - [ ] CSMA/CD — Aula 5, slides 18–24
@@ -35,27 +35,27 @@
 
 ### Aula 4
 
-- [ ] O que faz o nível de rede? — slides 5–12
-- [ ] Qual é a diferença entre encaminhamento e roteamento? — slides 5–6
-- [ ] O que é o modelo best effort? — slides 9–12
-- [ ] Como funciona uma tabela de encaminhamento? — slides 17–18
-- [ ] O que é longest prefix matching? — slide 18
-- [ ] O que é fragmentação IP? — slides 25–26
-- [ ] O que é uma sub-rede? — slides 27–31
-- [ ] Como funciona CIDR? — slide 32
-- [ ] Como funciona DHCP? — slides 34–37
-- [ ] O que é NAT e porque é usado? — slides 41 e 43–47
-- [ ] Quais são as vantagens e desvantagens do NAT? — slides 43–47
-- [ ] Porque surgiu IPv6? — slide 48
-- [ ] Como funciona o tunelamento IPv6 sobre IPv4? — slides 51–52
-- [ ] Como funciona Dijkstra? — slides 61–67
-- [ ] Como funciona Distance Vector? — slides 68–76
-- [ ] Qual a diferença entre Link State e Distance Vector? — slide 76
-- [ ] O que é um AS? — slides 78–80
-- [ ] Qual a diferença entre intra-AS e inter-AS? — slides 79–83 e 100
-- [ ] O que é OSPF? — slides 83–85
-- [ ] O que é BGP? — slides 86–100
-- [ ] O que são AS-PATH e NEXT-HOP? — slide 91
+- [x] O que faz o nível de rede? — slides 5–12 → `4.1`
+- [x] Qual é a diferença entre encaminhamento e roteamento? — slides 5–6 → `4.1`
+- [x] O que é o modelo best effort? — slides 9–12 → `4.1`
+- [x] Como funciona uma tabela de encaminhamento? — slides 17–18 → `4.2`
+- [x] O que é longest prefix matching? — slide 18 → `4.2`
+- [x] O que é fragmentação IP? — slides 25–26 → `4.3`
+- [x] O que é uma sub-rede? — slides 27–31 → `4.4`
+- [x] Como funciona CIDR? — slide 32 → `4.4`
+- [x] Como funciona DHCP? — slides 34–37 → `4.5`
+- [x] O que é NAT e porque é usado? — slides 41 e 43–47 → `4.6`
+- [x] Quais são as vantagens e desvantagens do NAT? — slides 43–47 → `4.6`
+- [x] Porque surgiu IPv6? — slide 48 → `4.7`
+- [x] Como funciona o tunelamento IPv6 sobre IPv4? — slides 51–52 → `4.7`
+- [x] Como funciona Dijkstra? — slides 61–67 → `4.8`
+- [x] Como funciona Distance Vector? — slides 68–76 → `4.8`
+- [x] Qual a diferença entre Link State e Distance Vector? — slide 76 → `4.8`
+- [x] O que é um AS? — slides 78–80 → `4.9`
+- [x] Qual a diferença entre intra-AS e inter-AS? — slides 79–83 e 100 → `4.9`
+- [x] O que é OSPF? — slides 83–85 → `4.9`
+- [x] O que é BGP? — slides 86–100 → `4.9`
+- [x] O que são AS-PATH e NEXT-HOP? — slide 91 → `4.9`
 
 ### Aula 5
 

@@ -6,6 +6,19 @@
 
 ## Aula 4 — Nível Rede
 
+> **Resumos por tópico (Aula 4 — todos feitos ✅).** Para cada tópico abaixo, o
+> resumo correspondente está em:
+> - `4.1_camada_rede.md` — Introdução (funções, encaminhamento vs roteamento, planos, best effort)
+> - `4.2_dentro_de_um_router.md` — Dentro de um router (portos, comutação, filas, LPM)
+> - `4.3_datagrama_ip.md` — Datagrama IPv4 e fragmentação
+> - `4.4_enderecamento_ipv4.md` — Endereçamento IPv4, sub-redes, máscaras, CIDR
+> - `4.5_dhcp.md` — DHCP
+> - `4.6_nat.md` — NAT
+> - `4.7_ipv6.md` — IPv6 e tunelamento
+> - `4.8_algoritmos_roteamento.md` — Link State/Dijkstra e Distance Vector/Bellman-Ford
+> - `4.9_roteamento_internet.md` — AS, OSPF, BGP
+> - `conceitos.md` — definições de todos os conceitos a negrito
+
 ### 1. Funções do nível de rede
 
 - [ ] Saber o papel do nível de rede na Internet
