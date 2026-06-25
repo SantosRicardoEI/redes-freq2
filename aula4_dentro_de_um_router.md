@@ -1,0 +1,442 @@
+# O que está dentro de um router — Resumo
+
+## 1. Função geral de um router
+
+Um **router** é um equipamento da camada de rede que recebe datagramas IP, analisa o cabeçalho e encaminha cada datagrama para a interface de saída correta.
+
+Resumo:
+
+- recebe datagramas;
+- consulta a tabela de encaminhamento;
+- escolhe a porta/interface de saída;
+- envia o datagrama para o próximo salto.
+
+---
+
+## 2. Componentes principais de um router
+
+Um router é composto por:
+
+- **portos de entrada**;
+- **tecido de comutação**;
+- **portos de saída**;
+- **processador de roteamento**.
+
+Esquema simples:
+
+Portos de entrada → Tecido de comutação → Portos de saída
+↑
+Processador de roteamento
+
+---
+
+## 3. Portos de entrada
+
+Os **portos de entrada** são as interfaces por onde os datagramas chegam ao router.
+
+Funções principais:
+
+- receber bits do meio físico;
+- processar a trama da camada de ligação;
+- extrair o datagrama IP;
+- analisar campos do cabeçalho IP;
+- consultar a tabela de encaminhamento;
+- decidir o porto de saída;
+- enviar o datagrama para o tecido de comutação.
+
+---
+
+## 4. Terminação de linha
+
+A **terminação de linha** é a função do nível físico no porto de entrada.
+
+Recebe os bits que chegam pelo meio físico, como cabo, fibra ou ligação sem fios.
+
+Resumo:
+
+- **Terminação de linha** — receção de bits no nível físico.
+
+---
+
+## 5. Processamento do nível de ligação
+
+Depois da receção dos bits, o porto de entrada processa a camada de ligação.
+
+Exemplo:
+
+- recebe uma trama Ethernet;
+- verifica/processa a trama;
+- extrai o datagrama IP que está dentro da trama.
+
+Resumo:
+
+- **Processamento de ligação** — tratamento da trama e extração do datagrama IP.
+
+---
+
+## 6. Procura e encaminhamento no porto de entrada
+
+O porto de entrada analisa campos do cabeçalho do datagrama, normalmente o endereço IP de destino.
+
+Depois consulta a tabela de encaminhamento para descobrir por que porta de saída o datagrama deve seguir.
+
+Resumo:
+
+- lê o cabeçalho IP;
+- procura o destino na tabela;
+- escolhe a interface de saída.
+
+---
+
+## 7. Comutação descentralizada
+
+A **comutação descentralizada** significa que o porto de entrada pode fazer a procura e decisão de encaminhamento localmente, sem depender sempre do processador central.
+
+Cada porto de entrada pode ter uma cópia da tabela de encaminhamento na sua memória.
+
+Objetivo:
+
+- processar o datagrama diretamente no porto de entrada;
+- acelerar o encaminhamento;
+- operar à velocidade da linha.
+
+Resumo:
+
+- **Comutação descentralizada** — decisão de encaminhamento feita no porto de entrada usando uma tabela local.
+
+---
+
+## 8. Encaminhamento baseado no destino
+
+O **encaminhamento baseado no destino** é o tipo mais comum de encaminhamento.
+
+O router decide a porta de saída apenas com base no endereço IP de destino do datagrama.
+
+Resumo:
+
+- olha para o IP de destino;
+- procura a melhor entrada na tabela;
+- envia pela interface correspondente.
+
+Exemplo:
+
+Destino IP → tabela de encaminhamento → interface de saída
+
+---
+
+## 9. Encaminhamento generalizado
+
+O **encaminhamento generalizado** permite encaminhar datagramas com base em vários campos do cabeçalho, não apenas no IP de destino.
+
+Pode usar, por exemplo:
+
+- IP de origem;
+- IP de destino;
+- protocolo;
+- portas;
+- outros campos do cabeçalho.
+
+Resumo:
+
+- **Encaminhamento generalizado** — decisão de encaminhamento baseada em vários campos do cabeçalho.
+
+---
+
+## 10. Longest prefix matching
+
+O **longest prefix matching** é a regra usada quando várias entradas da tabela de encaminhamento podem corresponder ao mesmo endereço de destino.
+
+O router escolhe a entrada com o prefixo mais longo, ou seja, a mais específica.
+
+Resumo:
+
+- se várias rotas servem para o destino;
+- escolhe-se a rota com mais bits em comum no prefixo;
+- a rota mais específica ganha.
+
+Exemplo simples:
+
+10.0.0.0/8 serve para muitos destinos.
+10.1.2.0/24 é mais específica.
+Se o destino for 10.1.2.5, escolhe-se 10.1.2.0/24.
+
+Resumo:
+
+- **Longest prefix matching** — escolha da entrada mais específica da tabela de encaminhamento.
+
+---
+
+## 11. Tecido de comutação
+
+O **tecido de comutação** é a parte interna do router que move os datagramas dos portos de entrada para os portos de saída.
+
+Função:
+
+- recebe o datagrama do porto de entrada;
+- transfere-o internamente para o porto de saída correto.
+
+Resumo:
+
+- **Tecido de comutação** — mecanismo interno que transfere datagramas da entrada para a saída correta.
+
+---
+
+## 12. Taxa de comutação
+
+A **taxa de comutação** é a velocidade a que o tecido de comutação consegue transferir datagramas dos portos de entrada para os portos de saída.
+
+Se houver N portos de entrada com taxa R, o ideal é que o tecido consiga trabalhar perto de N × R.
+
+Resumo:
+
+- **Taxa de comutação** — velocidade interna de transferência de pacotes dentro do router.
+
+---
+
+## 13. Portos de saída
+
+Os **portos de saída** são as interfaces por onde os datagramas saem do router.
+
+Funções principais:
+
+- recebem datagramas vindos do tecido de comutação;
+- guardam datagramas em buffer se necessário;
+- escolhem que datagrama enviar primeiro;
+- encapsulam o datagrama numa trama de ligação;
+- transmitem bits pelo meio físico.
+
+Resumo:
+
+- **Porto de saída** — interface que envia o datagrama para o próximo salto.
+
+---
+
+## 14. Fila no porto de entrada
+
+Pode formar-se uma fila no porto de entrada quando os datagramas chegam mais depressa do que conseguem ser enviados para o tecido de comutação.
+
+Consequências:
+
+- atraso;
+- acumulação de datagramas;
+- perda de datagramas se o buffer encher.
+
+Resumo:
+
+- **Fila no porto de entrada** — acumulação de datagramas antes de entrarem no tecido de comutação.
+
+---
+
+## 15. Head-of-the-Line Blocking
+
+O **Head-of-the-Line Blocking** acontece quando o datagrama que está à frente da fila impede outros datagramas atrás dele de avançarem, mesmo que esses outros pudessem seguir para portos de saída livres.
+
+Resumo:
+
+- o primeiro datagrama da fila bloqueia os seguintes;
+- causa atrasos;
+- reduz a eficiência do router.
+
+Resumo curto:
+
+- **HOL blocking** — bloqueio causado pelo datagrama no início da fila.
+
+---
+
+## 16. Fila no porto de saída
+
+Pode formar-se uma fila no porto de saída quando os datagramas chegam do tecido de comutação mais depressa do que conseguem ser transmitidos pela ligação de saída.
+
+Consequências:
+
+- atraso;
+- congestionamento;
+- perda de datagramas se o buffer encher.
+
+Resumo:
+
+- **Fila no porto de saída** — acumulação de datagramas antes da transmissão para a ligação seguinte.
+
+---
+
+## 17. Buffer
+
+Um **buffer** é uma zona de memória usada para guardar temporariamente datagramas que estão à espera de ser processados ou transmitidos.
+
+Pode existir:
+
+- nos portos de entrada;
+- nos portos de saída.
+
+Se o buffer ficar cheio, datagramas podem ser descartados.
+
+Resumo:
+
+- **Buffer** — memória temporária para guardar datagramas em fila.
+
+---
+
+## 18. Perda por falta de buffer
+
+A **perda por falta de buffer** acontece quando chegam datagramas, mas já não há espaço na fila/buffer para os guardar.
+
+Nesse caso, alguns datagramas são descartados.
+
+Resumo:
+
+- **Perda por falta de buffer** — datagramas descartados por não haver espaço para os guardar.
+
+---
+
+## 19. Política de eliminação
+
+A **política de eliminação** define que datagramas devem ser descartados quando o buffer está cheio.
+
+Exemplo:
+
+- descartar o datagrama que acabou de chegar;
+- descartar outro datagrama já na fila;
+- descartar pacotes de menor prioridade.
+
+Resumo:
+
+- **Política de eliminação** — regra que decide que datagrama é descartado quando não há espaço no buffer.
+
+---
+
+## 20. Escalonamento
+
+O **escalonamento** é a política que decide qual datagrama da fila será transmitido a seguir.
+
+Pode ser:
+
+- por ordem de chegada;
+- por prioridade;
+- por outro critério.
+
+Resumo:
+
+- **Escalonamento** — escolha do próximo datagrama a transmitir.
+
+---
+
+## 21. Escalonamento por prioridades
+
+No **escalonamento por prioridades**, alguns datagramas podem ser enviados antes de outros.
+
+Exemplo:
+
+- tráfego de voz/vídeo pode ter prioridade sobre downloads;
+- pacotes prioritários podem ter melhor desempenho.
+
+Problema:
+
+- pode afetar a neutralidade da rede;
+- alguns tráfegos podem ser favorecidos em relação a outros.
+
+Resumo:
+
+- **Escalonamento por prioridades** — envio preferencial de certos datagramas em relação a outros.
+
+---
+
+## 22. Processador de roteamento
+
+O **processador de roteamento** é o componente do router responsável pelo plano de controlo.
+
+Funções:
+
+- executar protocolos de roteamento;
+- calcular caminhos;
+- atualizar tabelas de encaminhamento;
+- gerir o router.
+
+Resumo:
+
+- **Processador de roteamento** — componente responsável pelo roteamento e gestão do router.
+
+---
+
+## 23. Plano de controlo no router
+
+O **plano de controlo** trata do roteamento e gestão.
+
+Opera normalmente em software e numa escala mais lenta, como milissegundos.
+
+Funções:
+
+- calcular rotas;
+- executar protocolos de roteamento;
+- atualizar tabelas;
+- gerir o funcionamento do router.
+
+Resumo:
+
+- **Plano de controlo no router** — parte que calcula e gere as rotas.
+
+---
+
+## 24. Plano dos dados no router
+
+O **plano dos dados** trata do encaminhamento real dos datagramas.
+
+Opera normalmente em hardware e numa escala muito rápida, como nanossegundos.
+
+Funções:
+
+- receber datagramas;
+- procurar a porta de saída;
+- mover datagramas pelo tecido de comutação;
+- enviá-los pela interface correta.
+
+Resumo:
+
+- **Plano dos dados no router** — parte que encaminha datagramas rapidamente.
+
+---
+
+## 25. Diferença entre plano de controlo e plano dos dados no router
+
+Plano de controlo:
+
+- software;
+- mais lento;
+- calcula rotas;
+- atualiza tabelas;
+- escala de milissegundos.
+
+Plano dos dados:
+
+- hardware;
+- muito rápido;
+- encaminha datagramas;
+- move pacotes da entrada para a saída;
+- escala de nanossegundos.
+
+Resumo:
+
+Plano de controlo = decide.
+Plano dos dados = executa.
+
+---
+
+## 26. Processo completo dentro do router
+
+Quando um datagrama entra num router:
+
+1. chega ao porto de entrada;
+2. é recebido ao nível físico;
+3. a trama é processada ao nível de ligação;
+4. o datagrama IP é extraído;
+5. o cabeçalho IP é analisado;
+6. a tabela de encaminhamento é consultada;
+7. é escolhido o porto de saída;
+8. o datagrama passa pelo tecido de comutação;
+9. pode ficar em fila no porto de saída;
+10. é enviado para o próximo salto.
+
+---
+
+## 27. Ideia final
+
+Dentro de um router, o plano de controlo calcula e atualiza as rotas, enquanto o plano dos dados encaminha rapidamente os datagramas. Os portos de entrada recebem e analisam os datagramas, o tecido de comutação move-os internamente, e os portos de saída transmitem-nos para o próximo salto. Filas e buffers são usados quando os datagramas chegam mais depressa do que conseguem ser processados ou enviados.
