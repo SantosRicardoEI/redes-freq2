@@ -61,5 +61,3 @@
 - **Modelo de serviço de rede** — Define as garantias que uma rede oferece ao transportar datagramas. Essas garantias podem incluir entrega, atraso máximo, ordem ou largura de banda mínima. No caso da Internet IP, o modelo é best effort: a rede tenta entregar, mas não garante.
 
 - **Best effort** — Modelo simples e escalável em que a rede tenta entregar os datagramas sem garantias. Teve sucesso porque simplifica os routers, permite grande adopção da Internet, e as camadas superiores/aplicações compensam muitas limitações com largura de banda, CDNs, replicação e controlo de congestão.
-
-- **Porque a Internet usa best effort** — Porque manter a camada de rede simples permite maior escalabilidade e flexibilidade. O IP apenas tenta encaminhar datagramas; garantias como entrega, ordem, atraso ou fiabilidade ficam para camadas superiores, como o transporte. Quanto mais garantias de QoS uma rede dá, mais complexa é a sua gestão. A Internet escolhe best effort para ser simples e escalável.
