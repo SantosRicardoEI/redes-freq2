@@ -263,6 +263,17 @@
 
 ## Aula 5 — Nível Ligação
 
+> **Resumos por tópico (Aula 5 — todos feitos ✅).** Para cada tópico abaixo, o
+> resumo correspondente está em:
+> - `5.1_introducao_servicos.md` — Introdução e serviços (trama, MAC, deteção de erros, adaptador)
+> - `5.2_acesso_multiplo.md` — Protocolos de acesso múltiplo (TDMA/FDMA, CSMA/CD, polling/token)
+> - `5.3_enderecamento_arp.md` — Endereços MAC, ARP, envio para outra rede
+> - `5.4_ethernet.md` — Ethernet (trama, CSMA/CD, modelo de serviço)
+> - `5.5_switches.md` — Switches, auto-aprendizagem, switches vs routers
+> - `5.6_wifi.md` — Redes sem fios, 802.11, nó oculto, CSMA/CA, RTS/CTS, WPA3
+> - `5.7_vlans.md` — VLANs, porto trunk, 802.1Q, EVPN/VXLAN
+> - `conceitos.md` — definições de todos os conceitos a negrito
+
 ### 1. Introdução ao nível ligação
 
 - [ ] Saber o papel do nível ligação

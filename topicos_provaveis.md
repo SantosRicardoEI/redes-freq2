@@ -17,17 +17,17 @@
 - [x] Distance Vector / Bellman-Ford — Aula 4, slides 68–76 → `4.8`
 - [x] OSPF — Aula 4, slides 83–85 → `4.9`
 - [x] BGP — Aula 4, slides 86–100 → `4.9`
-- [ ] Serviços do nível ligação — Aula 5, slides 8–10
-- [ ] Protocolos de acesso múltiplo — Aula 5, slides 13–25
-- [ ] CSMA/CD — Aula 5, slides 18–24
-- [ ] CSMA/CA — Aula 5, slides 64–67
-- [ ] MAC vs IP — Aula 5, slides 27–29
-- [ ] ARP — Aula 5, slides 30–31
-- [ ] Ethernet — Aula 5, slides 35–39
-- [ ] Switches — Aula 5, slides 40–47
-- [ ] Switches vs routers — Aula 5, slide 48
-- [ ] WiFi / 802.11 — Aula 5, slides 49–71
-- [ ] VLANs — Aula 5, slides 72–79
+- [x] Serviços do nível ligação — Aula 5, slides 8–10 → `5.1`
+- [x] Protocolos de acesso múltiplo — Aula 5, slides 13–25 → `5.2`
+- [x] CSMA/CD — Aula 5, slides 18–24 → `5.2`
+- [x] CSMA/CA — Aula 5, slides 64–67 → `5.6`
+- [x] MAC vs IP — Aula 5, slides 27–29 → `5.3`
+- [x] ARP — Aula 5, slides 30–31 → `5.3`
+- [x] Ethernet — Aula 5, slides 35–39 → `5.4`
+- [x] Switches — Aula 5, slides 40–47 → `5.5`
+- [x] Switches vs routers — Aula 5, slide 48 → `5.5`
+- [x] WiFi / 802.11 — Aula 5, slides 49–71 → `5.6`
+- [x] VLANs — Aula 5, slides 72–79 → `5.7`
 
 ---
 
@@ -59,22 +59,22 @@
 
 ### Aula 5
 
-- [ ] O que faz o nível ligação? — slides 5–7
-- [ ] O que é uma trama? — slides 5 e 8
-- [ ] Que serviços são prestados pelo nível ligação? — slides 8–10
-- [ ] O que é um protocolo de acesso múltiplo? — slides 13–16
-- [ ] Qual a diferença entre TDMA, FDMA, CSMA, CSMA/CD e CSMA/CA? — slides 17–24 e 64–67
-- [ ] Porque há colisões? — slides 14 e 20–21
-- [ ] Porque CSMA/CD é usado em redes com fio e CSMA/CA em WiFi? — slides 18–24 e 64–67
-- [ ] O que é um endereço MAC? — slides 27–29
-- [ ] Qual a diferença entre endereço MAC e endereço IP? — slides 27–29
-- [ ] Como funciona ARP? — slides 30–31
-- [ ] O que acontece quando se envia um datagrama para outra rede? — slides 32–34
-- [ ] Qual é a estrutura de uma trama Ethernet? — slide 38
-- [ ] O que faz um switch? — slides 40–47
-- [ ] Como um switch aprende a sua tabela? — slides 45–47
-- [ ] Qual a diferença entre switch e router? — slide 48
-- [ ] O que é o problema do nó oculto? — slides 62–63
-- [ ] Como funciona RTS/CTS? — slides 66–67
-- [ ] O que é uma VLAN? — slides 72–76
-- [ ] Para que serve 802.1Q? — slide 78
+- [x] O que faz o nível ligação? — slides 5–7 → `5.1`
+- [x] O que é uma trama? — slides 5 e 8 → `5.1`
+- [x] Que serviços são prestados pelo nível ligação? — slides 8–10 → `5.1`
+- [x] O que é um protocolo de acesso múltiplo? — slides 13–16 → `5.2`
+- [x] Qual a diferença entre TDMA, FDMA, CSMA, CSMA/CD e CSMA/CA? — slides 17–24 e 64–67 → `5.2`+`5.6`
+- [x] Porque há colisões? — slides 14 e 20–21 → `5.2`
+- [x] Porque CSMA/CD é usado em redes com fio e CSMA/CA em WiFi? — slides 18–24 e 64–67 → `5.2`+`5.6`
+- [x] O que é um endereço MAC? — slides 27–29 → `5.3`
+- [x] Qual a diferença entre endereço MAC e endereço IP? — slides 27–29 → `5.3`
+- [x] Como funciona ARP? — slides 30–31 → `5.3`
+- [x] O que acontece quando se envia um datagrama para outra rede? — slides 32–34 → `5.3`
+- [x] Qual é a estrutura de uma trama Ethernet? — slide 38 → `5.4`
+- [x] O que faz um switch? — slides 40–47 → `5.5`
+- [x] Como um switch aprende a sua tabela? — slides 45–47 → `5.5`
+- [x] Qual a diferença entre switch e router? — slide 48 → `5.5`
+- [x] O que é o problema do nó oculto? — slides 62–63 → `5.6`
+- [x] Como funciona RTS/CTS? — slides 66–67 → `5.6`
+- [x] O que é uma VLAN? — slides 72–76 → `5.7`
+- [x] Para que serve 802.1Q? — slide 78 → `5.7`
