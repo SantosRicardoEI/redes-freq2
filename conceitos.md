@@ -61,3 +61,53 @@
 - **Modelo de serviço de rede** — Define as garantias que uma rede oferece ao transportar datagramas. Essas garantias podem incluir entrega, atraso máximo, ordem ou largura de banda mínima. No caso da Internet IP, o modelo é best effort: a rede tenta entregar, mas não garante.
 
 - **Best effort** — Modelo simples e escalável em que a rede tenta entregar os datagramas sem garantias. Teve sucesso porque simplifica os routers, permite grande adopção da Internet, e as camadas superiores/aplicações compensam muitas limitações com largura de banda, CDNs, replicação e controlo de congestão.
+
+- **Arquitetura de router** — Organização interna de um router, composta por portos de entrada, tecido de comutação, portos de saída e processador de roteamento.
+
+- **Portos de entrada do router** — Interfaces por onde os datagramas chegam ao router.
+
+- **Portos de saída do router** — Interfaces por onde os datagramas saem do router para o próximo salto.
+
+- **Tecido de comutação** — Parte interna do router que move datagramas dos portos de entrada para os portos de saída corretos.
+
+- **Processador de roteamento** — Componente do router responsável pelo plano de controlo, incluindo roteamento, gestão e atualização de tabelas.
+
+- **Terminação de linha** — Função do nível físico no porto de entrada, responsável por receber bits do meio físico.
+
+- **Processamento do nível de ligação** — Função que processa a trama recebida e extrai o datagrama IP.
+
+- **Procura no porto de entrada** — Consulta da tabela de encaminhamento para descobrir a porta de saída do datagrama.
+
+- **Comutação descentralizada** — Encaminhamento feito diretamente no porto de entrada, usando uma tabela local, para acelerar o processamento.
+
+- **Encaminhamento baseado no destino** — Encaminhamento em que o router decide a saída apenas com base no endereço IP de destino.
+
+- **Encaminhamento generalizado** — Encaminhamento baseado em vários campos do cabeçalho, não apenas no IP de destino.
+
+- **Longest prefix matching** — Regra que escolhe a entrada mais específica da tabela de encaminhamento quando várias correspondem ao destino.
+
+- **Taxa de comutação** — Velocidade a que o tecido de comutação consegue mover datagramas dentro do router.
+
+- **Fila no porto de entrada** — Acumulação de datagramas quando chegam mais depressa do que conseguem entrar no tecido de comutação.
+
+- **Fila no porto de saída** — Acumulação de datagramas quando chegam mais depressa do que conseguem ser transmitidos pela ligação de saída.
+
+- **Buffer** — Memória temporária usada para guardar datagramas em fila.
+
+- **Perda por falta de buffer** — Descarte de datagramas quando a fila/buffer está cheio.
+
+- **Head-of-the-Line Blocking** — Situação em que o primeiro datagrama da fila bloqueia os que estão atrás, mesmo que estes pudessem avançar.
+
+- **Política de eliminação** — Regra que decide que datagrama é descartado quando o buffer está cheio.
+
+- **Escalonamento** — Regra que decide qual datagrama da fila será transmitido a seguir.
+
+- **Escalonamento por prioridades** — Escalonamento em que certos datagramas têm prioridade sobre outros.
+
+- **Plano de controlo no router** — Parte mais lenta, normalmente em software, responsável por calcular rotas e gerir tabelas.
+
+- **Plano dos dados no router** — Parte rápida, normalmente em hardware, responsável por encaminhar datagramas da entrada para a saída.
+
+- **Próximo salto** — Próximo dispositivo para onde o router envia o datagrama no caminho até ao destino.
+
+- **Interface de saída** — Porta escolhida pelo router para enviar o datagrama para o próximo salto.
